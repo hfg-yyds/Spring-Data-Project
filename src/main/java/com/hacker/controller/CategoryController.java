@@ -1,17 +1,14 @@
 package com.hacker.controller;
 
-
 import com.hacker.result.R;
 import com.hacker.service.CategoryService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.Locale;
 
 /**
  * <p>
@@ -33,9 +30,9 @@ public class CategoryController {
      */
     @GetMapping("/list/tree")
     @ApiOperation(value = "查出所有分类以及子分类，以树形结构组装起来")
+    @Cacheable(key = "'pms:category:list'",unless = "#result.data==null")
     public R<?> list() {
         return R.run(() -> categoryService.listWithTree());
     }
 
 }
-
