@@ -1,11 +1,5 @@
 package com.hacker.service.impl;
 
-/**
- * @Author: Zero
- * @Date: 2022/6/13 00:12
- * @Description:
- */
-
 import com.hacker.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -17,8 +11,9 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * redis操作实现类
- * Created by macro on 2020/3/3.
+ * @Author: Zero
+ * @Date: 2022/6/13 00:12
+ * @Description: redis操作实现类
  */
 @Service
 public class RedisServiceImpl implements RedisService {

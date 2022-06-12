@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * @Author: Zero
  * @Date: 2022/6/13 00:10
- * @Description:
+ * @Description: redis操作封装
  */
 public interface RedisService {
 

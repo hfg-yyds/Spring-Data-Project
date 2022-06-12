@@ -2,6 +2,8 @@ package com.hacker.controller;
 
 import com.hacker.result.R;
 import com.hacker.service.CategoryService;
+import com.hacker.service.RedisListService;
+import com.hacker.service.RedisService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -25,13 +27,15 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private RedisService redisService;
     /**
      * 查出所有分类以及子分类，以树形结构组装起来
      */
     @GetMapping("/list/tree")
     @ApiOperation(value = "查出所有分类以及子分类，以树形结构组装起来")
-    @Cacheable(key = "'pms:category:list'",unless = "#result.data==null")
     public R<?> list() {
+        redisService.set("name","韩福贵");
         return R.run(() -> categoryService.listWithTree());
     }
 
