@@ -1,11 +1,5 @@
 package com.hacker.config;
 
-/**
- * @Author: Zero
- * @Date: 2022/6/13 00:05
- * @Description:
- */
-
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,9 +19,11 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
 
+
 /**
- * Redis配置类
- * Created by macro on 2020/3/2.
+ * @Author: Zero
+ * @Date: 2022/6/13 00:05
+ * @Description:
  */
 @EnableCaching
 @Configuration
@@ -36,7 +32,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     /**
      * redis数据库自定义key
      */
-    public  static final String REDIS_KEY_DATABASE="mall";
+//    public  static final String REDIS_KEY_DATABASE="mall";
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
