@@ -2,8 +2,6 @@ package com.hacker.controller;
 
 import com.hacker.result.R;
 import com.hacker.service.CategoryService;
-import com.hacker.redis.RedisService;
-import com.hacker.service.RedisStringTestService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
