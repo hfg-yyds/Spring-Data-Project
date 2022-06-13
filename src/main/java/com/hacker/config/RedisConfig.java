@@ -3,10 +3,12 @@ package com.hacker.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
@@ -16,6 +18,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 
@@ -25,15 +28,47 @@ import java.time.Duration;
  * @Date: 2022/6/13 00:05
  * @Description:
  */
+@EqualsAndHashCode(callSuper = true)
 @EnableCaching
-@Configuration
+@Component
+@ConfigurationProperties(prefix = "spring.redis")
+@Data
 public class RedisConfig extends CachingConfigurerSupport {
+    /**
+     * 主机
+     */
+    private String host;
+
+    /**
+     * 端口
+     */
+    private Integer port;
+
+    /**
+     * 连接超时，单位秒
+     */
+    private Integer timeout2;
+
+    /**
+     * 连接池最大连接数
+     */
+    private Integer poolMaxTotal;
+
+    /**
+     * 连接池最大空闲连接数
+     */
+    private Integer poolMaxIdle;
+
+    /**
+     * 等待超时，单位秒
+     */
+
+    private Integer poolMaxWait;
 
     /**
      * redis数据库自定义key
      */
 //    public  static final String REDIS_KEY_DATABASE="mall";
-
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisSerializer<Object> serializer = redisSerializer();
@@ -47,7 +82,6 @@ public class RedisConfig extends CachingConfigurerSupport {
         return redisTemplate;
     }
 
-    @Bean
     public RedisSerializer<Object> redisSerializer() {
         //创建JSON序列化器
         Jackson2JsonRedisSerializer<Object> serializer = new Jackson2JsonRedisSerializer<>(Object.class);

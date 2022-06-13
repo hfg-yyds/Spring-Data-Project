@@ -2,6 +2,7 @@ package com.hacker.mapper;
 
 import com.hacker.po.Category;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Zero
  * @since 2022-06-12
  */
+@Mapper
 public interface CategoryMapper extends BaseMapper<Category> {
 
 }

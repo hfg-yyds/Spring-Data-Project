@@ -1,6 +1,6 @@
 package com.hacker.service.impl;
 
-import com.hacker.service.RedisService;
+import com.hacker.service.RedisStringTestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @Description: redis操作实现类
  */
 @Service
-public class RedisServiceImpl implements RedisService {
+public class RedisServiceTestImpl implements RedisStringTestService {
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -63,7 +63,8 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public Long incr(String key, long delta) {
-        return redisTemplate.opsForValue().increment(key, delta);
+
+        return redisTemplate.opsForValue().increment(key,delta);
     }
 
     @Override

@@ -1,16 +1,17 @@
 package com.hacker.service;
 
+import com.hacker.redis.RedisService;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * @Author: Zero
- * @Date: 2022/6/13 00:10
- * @Description: redis操作封装
+ * @Date: 2022/6/13 00:46
+ * @Description:
  */
-public interface RedisService {
-
+public interface RedisStringTestService {
     /**
      * 保存属性
      */
@@ -181,4 +182,3 @@ public interface RedisService {
      */
     Long lRemove(String key, long count, Object value);
 }
-
