@@ -60,4 +60,28 @@ public class RedisStringService extends AbstractRedisStringService {
     public void setNx(String key, Object value) {
         redisTemplate.opsForValue().setIfAbsent(key,value);
     }
+
+    /**
+     * 按delta递增
+     *
+     * @param key
+     * @param delta
+     */
+    @Override
+    public Long incr(String key, long delta) {
+        return redisTemplate.opsForValue().increment(key,delta);
+    }
+
+    /**
+     * 按delta递减
+     *
+     * @param key
+     * @param delta
+     */
+    @Override
+    public Long decr(String key, long delta) {
+        return redisTemplate.opsForValue().increment(key, -delta);
+    }
+
+
 }

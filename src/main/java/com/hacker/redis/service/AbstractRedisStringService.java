@@ -30,4 +30,14 @@ public abstract class AbstractRedisStringService extends RedisCommonService {
      */
     public abstract void setNx(String key,Object value);
 
+    /**
+     * 按delta递增
+     */
+    public abstract Long incr(String key, long delta);
+
+    /**
+     * 按delta递减
+     */
+    public abstract Long decr(String key, long delta);
+
 }

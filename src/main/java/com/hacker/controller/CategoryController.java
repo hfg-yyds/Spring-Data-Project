@@ -26,11 +26,6 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @Autowired
-    private RedisService redisService;
-
-    @Autowired
-    private RedisStringTestService redisStringService;
     /**
      * 查出所有分类以及子分类，以树形结构组装起来
      */

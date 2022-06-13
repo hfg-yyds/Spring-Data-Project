@@ -20,4 +20,5 @@ class RedisApplicationTests {
     void testStringService() {
         System.out.println(redisStringService.hasKey("name"));
     }
+
 }
