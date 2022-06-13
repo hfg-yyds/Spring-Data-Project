@@ -10,6 +10,7 @@ import java.util.List;
  * @Description:
  */
 public abstract class AbstractRedisListService extends RedisCommonService {
+
     /**
      * 获取List结构中的属性
      */
