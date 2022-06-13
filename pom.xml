@@ -18,14 +18,14 @@
     </properties>
     <dependencies>
 
-        <!--实现分布式锁的工具类-->
+        <!--实现分布式锁的工具类 侧重于Redis 分布式开发-->
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson</artifactId>
             <version>3.6.1</version>
         </dependency>
 
-        <!--redis客户端-->
+        <!--redis客户端 侧重于Redis CRUD-->
         <!-- other dependency elements omitted -->
         <dependency>
             <groupId>io.lettuce</groupId>
@@ -38,11 +38,13 @@
             <artifactId>commons-pool2</artifactId>
         </dependency>
 
+        <!--SpringDataRedis依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
+        <!--SpringDataMongoDB-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>

@@ -23,9 +23,9 @@ public class RedisListService extends AbstractRedisListService {
     /**
      * 获取List结构中的属性
      *
-     * @param key
-     * @param start
-     * @param end
+     * @param key key
+     * @param start start
+     * @param end end
      */
     @Override
     public List<Object> lRange(String key, long start, long end) {
