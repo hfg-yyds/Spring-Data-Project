@@ -62,6 +62,27 @@ public class RedisStringService extends AbstractRedisStringService {
     }
 
     /**
+     * 向字符串尾部追加值
+     * @param key key
+     * @param value value
+     */
+    @Override
+    public void append(String key, String value) {
+        redisTemplate.opsForValue().append(key, value);
+    }
+
+    /**
+     * 获取字符串长度
+     *
+     * @param key
+     * @return
+     */
+    @Override
+    public Long strlen(String key) {
+        return redisTemplate.opsForValue().size(key);
+    }
+
+    /**
      * 按delta递增
      *
      * @param key

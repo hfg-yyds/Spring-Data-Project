@@ -31,6 +31,20 @@ public abstract class AbstractRedisStringService extends RedisCommonService {
     public abstract void setNx(String key,Object value);
 
     /**
+     * 向字符串尾部追加值
+     * @param key
+     * @param value
+     */
+    public abstract void append(String key,String value);
+
+    /**
+     * 获取字符串长度
+     * @param key
+     * @return
+     */
+    public abstract Long strlen(String key);
+
+    /**
      * 按delta递增
      */
     public abstract Long incr(String key, long delta);

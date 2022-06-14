@@ -1,0 +1,10 @@
+
+spring:
+  application:
+    name: ElasticSearch-Application
+
+  elasticsearch:
+    rest:
+    restclient:
+      sniffer:
+        delay-after-failure:

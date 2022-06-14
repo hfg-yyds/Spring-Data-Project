@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>redis-project</module>
+        <module>elasticsearch-project</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -13,7 +14,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hacker</groupId>
-    <artifactId>redis</artifactId>
+    <artifactId>spring-data</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-data-project</name>
     <description>spring-data demo project for Spring Boot</description>
@@ -22,30 +23,10 @@
     </properties>
     <dependencies>
 
-        <!--实现分布式锁的工具类 侧重于Redis 分布式开发-->
-        <dependency>
-            <groupId>org.redisson</groupId>
-            <artifactId>redisson</artifactId>
-            <version>3.6.1</version>
-        </dependency>
-
-        <!--redis客户端 侧重于Redis CRUD-->
-        <!-- other dependency elements omitted -->
-        <dependency>
-            <groupId>io.lettuce</groupId>
-            <artifactId>lettuce-core</artifactId>
-        </dependency>
-
         <!--由于SpringBoot 2.x中默认并没有使用Redis连接池,所以需要在pom.xml中添加commons-pool2的依赖-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
-        </dependency>
-
-        <!--SpringDataRedis依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
         <!--SpringDataMongoDB-->

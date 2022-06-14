@@ -106,13 +106,14 @@ public class RedisListService extends AbstractRedisListService {
     /**
      * 从List结构中移除属性
      *
-     * @param key
-     * @param count
-     * @param value
+     * @param key key
+     * @param count count
+     * @param value value
      */
     @Override
     public Long lRemove(String key, long count, Object value) {
         return redisTemplate.opsForList().remove(key, count, value);
     }
+
 
 }
