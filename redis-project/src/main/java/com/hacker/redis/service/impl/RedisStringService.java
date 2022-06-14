@@ -57,8 +57,8 @@ public class RedisStringService extends AbstractRedisStringService {
      * @param value
      */
     @Override
-    public void setNx(String key, Object value) {
-        redisTemplate.opsForValue().setIfAbsent(key,value);
+    public Boolean setNx(String key, Object value) {
+        return redisTemplate.opsForValue().setIfAbsent(key,value);
     }
 
     /**
@@ -67,14 +67,14 @@ public class RedisStringService extends AbstractRedisStringService {
      * @param value value
      */
     @Override
-    public void append(String key, String value) {
-        redisTemplate.opsForValue().append(key, value);
+    public Integer append(String key, String value) {
+        return redisTemplate.opsForValue().append(key, value);
     }
 
     /**
      * 获取字符串长度
      *
-     * @param key
+     * @param key key
      * @return
      */
     @Override

@@ -86,4 +86,5 @@ public class RedisSetService extends AbstractRedisSetService {
     public Long sRemove(String key, Object... values) {
         return redisTemplate.opsForSet().remove(key, values);
     }
+
 }

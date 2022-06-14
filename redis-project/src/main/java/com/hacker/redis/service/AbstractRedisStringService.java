@@ -28,14 +28,14 @@ public abstract class AbstractRedisStringService extends RedisCommonService {
      * @param key
      * @param value
      */
-    public abstract void setNx(String key,Object value);
+    public abstract Boolean setNx(String key,Object value);
 
     /**
      * 向字符串尾部追加值
      * @param key
      * @param value
      */
-    public abstract void append(String key,String value);
+    public abstract Integer append(String key,String value);
 
     /**
      * 获取字符串长度
