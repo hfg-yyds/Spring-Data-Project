@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 
+import javax.annotation.Resource;
+
 /**
  * @Author: Zero
  * @Date: 2022/6/12 23:52
@@ -14,7 +16,7 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 @Configuration
 public class LettuceConfig {
 
-    @Autowired
+    @Resource
     private RedisConfig redisConfig;
 
     @Bean
