@@ -1,13 +1,10 @@
 package com.hacker;
 
-import com.hacker.cache.Person;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.core.*;
-import org.springframework.data.redis.hash.HashMapper;
-import org.springframework.data.redis.hash.ObjectHashMapper;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.annotation.Resource;
@@ -18,11 +15,12 @@ import java.util.List;
 @ExtendWith(SpringExtension.class)
 class RedisApplicationTests {
 
-
-
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * 测试Redis Pipleine 批量执行Redis命令
+     */
     @Test
     void testPipelineTest1() {
         //执行一系列的命令,list是每一个命令的返回结果,封装成一个List

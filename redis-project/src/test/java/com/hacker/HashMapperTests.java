@@ -31,8 +31,13 @@ public class HashMapperTests {
     @Resource
     private RedisTemplate<String,Object> redisTemplate;
 
-    private HashMapper<Object, byte[], byte[]> mapper = new ObjectHashMapper();
+    @Test
+    public void testHash() {
+        HashOperations<String, Object, Object> hash = redisTemplate.opsForHash();
+        Person person = new Person("han3", "fugui3");
+    }
 
+    private final HashMapper<Object, byte[], byte[]> mapper = new ObjectHashMapper();
 
     @Test
     public void testWriteHashMapper() {
@@ -49,15 +54,19 @@ public class HashMapperTests {
     }
 
     public void writeHash(String key, Person person) {
-        HashOperations<String, byte[], byte[]> hash = redisTemplate.opsForHash();
+        HashOperations<String, byte[], byte[]> hash = getStringHashOperations();
         Map<byte[], byte[]> mappedHash = mapper.toHash(person);
-        hash .putAll(key, mappedHash);
+        hash.putAll(key, mappedHash);
     }
 
     public Person loadHash(String key) {
-        HashOperations<String, byte[], byte[]> hash = redisTemplate.opsForHash();
+        HashOperations<String, byte[], byte[]> hash = getStringHashOperations();
         Map<byte[], byte[]> loadedHash = hash.entries(key);
         return (Person) mapper.fromHash(loadedHash);
+    }
+
+    private HashOperations<String, byte[], byte[]> getStringHashOperations() {
+        return redisTemplate.opsForHash();
     }
 
 }
