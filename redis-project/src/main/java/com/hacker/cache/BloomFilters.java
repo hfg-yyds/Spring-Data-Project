@@ -4,6 +4,11 @@ package com.hacker.cache;
  * @Author: Zero
  * @Date: 2022/6/29 13:28
  * @Description:
+ *
+ *
+ * 1.只要返回数据不存在，则肯定不存在。
+ * 2.返回数据存在，但只能是大概率存在。
+ * 3.同时不能清除其中的数据。
  */
 public class BloomFilters {
     /**
