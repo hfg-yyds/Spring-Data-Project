@@ -16,6 +16,7 @@ public class AccessException extends RuntimeException {
 
     /**
      * 返回异常实列
+     *
      * @param accessReason accessReason
      */
     public AccessException(AccessReason accessReason) {
@@ -24,8 +25,9 @@ public class AccessException extends RuntimeException {
 
     /**
      * 返回异常实列
-     * @param accessReason  accessReason
-     * @param errorMsg errorMsg
+     *
+     * @param accessReason accessReason
+     * @param errorMsg     errorMsg
      */
     public AccessException(AccessReason accessReason, String errorMsg) {
         super(!StringUtils.isNotBlank(errorMsg) ? errorMsg : accessReason.getErrorMsg());

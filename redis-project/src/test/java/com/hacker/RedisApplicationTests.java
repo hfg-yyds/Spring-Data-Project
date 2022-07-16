@@ -26,10 +26,10 @@ class RedisApplicationTests {
         //执行一系列的命令,list是每一个命令的返回结果,封装成一个List
         List<Object> list = stringRedisTemplate.executePipelined((RedisCallback<Object>) connection -> {
             for (int i = 0; i < 3; i++) {
-                connection.set(String.format("Name %d",i).getBytes(StandardCharsets.UTF_8),"帅气".getBytes(StandardCharsets.UTF_8));
+                connection.set(String.format("Name %d", i).getBytes(StandardCharsets.UTF_8), "帅气".getBytes(StandardCharsets.UTF_8));
             }
             for (int i = 0; i < 3; i++) {
-                connection.get(String.format("Name %d",i).getBytes(StandardCharsets.UTF_8));
+                connection.get(String.format("Name %d", i).getBytes(StandardCharsets.UTF_8));
             }
             return null;
         });

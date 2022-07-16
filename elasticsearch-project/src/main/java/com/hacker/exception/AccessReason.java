@@ -37,9 +37,7 @@ public enum AccessReason {
     /**
      * 流程启动异常
      */
-    PROCESS_START_EXCEPTION("500006","流程启动异常")
-
-    ;
+    PROCESS_START_EXCEPTION("500006", "流程启动异常");
 
     /**
      * code
@@ -64,6 +62,7 @@ public enum AccessReason {
 
     /**
      * 生成异常实列
+     *
      * @return
      */
     public AccessException exception() {
@@ -72,6 +71,7 @@ public enum AccessReason {
 
     /**
      * 生成异常实列
+     *
      * @param errorMsg
      * @return
      */

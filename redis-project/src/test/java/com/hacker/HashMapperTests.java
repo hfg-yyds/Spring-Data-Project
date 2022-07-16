@@ -25,11 +25,11 @@ public class HashMapperTests {
     private static final String PERSON_KEY = "PERSON:%s";
 
     public String buildKey(String key) {
-        return String.format(PERSON_KEY,key);
+        return String.format(PERSON_KEY, key);
     }
 
     @Resource
-    private RedisTemplate<String,Object> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Test
     public void testHash() {
@@ -43,7 +43,7 @@ public class HashMapperTests {
     public void testWriteHashMapper() {
         //key =1
         Person person = new Person("han2", "fugui2");
-        writeHash(buildKey("2"),person);
+        writeHash(buildKey("2"), person);
     }
 
     @Test

@@ -3,10 +3,7 @@ package com.hacker.cache;
 /**
  * @Author: Zero
  * @Date: 2022/6/29 13:28
- * @Description:
- *
- *
- * 1.只要返回数据不存在，则肯定不存在。
+ * @Description: 1.只要返回数据不存在，则肯定不存在。
  * 2.返回数据存在，但只能是大概率存在。
  * 3.同时不能清除其中的数据。
  */
@@ -21,7 +18,6 @@ public class BloomFilters {
     private int[] array;
 
     /**
-     *
      * @param arraySize 布隆过滤器二进制数组大小
      */
     public BloomFilters(int arraySize) {
@@ -31,6 +27,7 @@ public class BloomFilters {
 
     /**
      * 写入数据
+     *
      * @param key
      */
     public void add(String key) {
@@ -44,6 +41,7 @@ public class BloomFilters {
 
     /**
      * 判断数据是否存在
+     *
      * @param key
      * @return
      */
@@ -69,6 +67,7 @@ public class BloomFilters {
 
     /**
      * hash 算法1
+     *
      * @param key
      * @return
      */
@@ -84,6 +83,7 @@ public class BloomFilters {
 
     /**
      * hash 算法2
+     *
      * @param data
      * @return
      */
@@ -102,7 +102,8 @@ public class BloomFilters {
     }
 
     /**
-     *  hash 算法3
+     * hash 算法3
+     *
      * @param key
      * @return
      */

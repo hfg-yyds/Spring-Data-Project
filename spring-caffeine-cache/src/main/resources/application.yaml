@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: caffeine-cache
+
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/cache?serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
