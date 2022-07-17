@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * @author: Zero
  * @Date: 2022/5/11 21:08
- * @Description:运行时异常访问报错原因
+ * @Description: 运行时异常访问报错原因
  */
 public enum AccessReason {
 

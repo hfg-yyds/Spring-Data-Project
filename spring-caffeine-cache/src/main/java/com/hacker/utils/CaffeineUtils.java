@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.hacker.mapper.ReturnmessageMapper;
 import com.hacker.po.Returnmessage;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -22,7 +21,7 @@ import javax.annotation.Resource;
 public class CaffeineUtils {
 
     @Resource
-    private Cache<String, String> caffeineCache;
+    private Cache<String,String> caffeineCache;
 
     @Resource
     private ReturnmessageMapper returnmessageMapper;
@@ -33,19 +32,29 @@ public class CaffeineUtils {
      * @return desc
      */
     public String getReturnDesc(String code) {
-        String cacheIfPresent = caffeineCache.getIfPresent(code);
-        if (StringUtils.isNotBlank(cacheIfPresent)) {
-            return cacheIfPresent;
-        }
-        QueryWrapper<Returnmessage> wrapper = new QueryWrapper<>();
-        wrapper.eq(Returnmessage.CODE,code);
-        Returnmessage returnmessage = returnmessageMapper.selectOne(wrapper);
-        if (returnmessage==null) {
-            throw new RuntimeException("没有这个错误吗");
-        }
-        //Push缓存
-        caffeineCache.put(returnmessage.getMessageCode(),returnmessage.getMessageDesc());
-        return returnmessage.getMessageDesc();
+        return caffeineCache.get(code,k->{
+                    QueryWrapper<Returnmessage> wrapper = new QueryWrapper<>();
+                    wrapper.eq(Returnmessage.CODE,k);
+                    Returnmessage returnmessage = returnmessageMapper.selectOne(wrapper);
+                    if (returnmessage==null) {
+                        throw new RuntimeException("没有该错误码");
+                    }
+                    return returnmessage.getMessageDesc();
+        });
+
+//        String cacheIfPresent = caffeineCache.getIfPresent(code);
+//        if (StringUtils.isNotBlank(cacheIfPresent)) {
+//            return cacheIfPresent;
+//        }
+//        QueryWrapper<Returnmessage> wrapper = new QueryWrapper<>();
+//        wrapper.eq(Returnmessage.CODE,code);
+//        Returnmessage returnmessage = returnmessageMapper.selectOne(wrapper);
+//        if (returnmessage==null) {
+//            throw new RuntimeException("没有这个错误吗");
+//        }
+//        //Push缓存
+//        caffeineCache.put(returnmessage.getMessageCode(),returnmessage.getMessageDesc());
+//        return returnmessage.getMessageDesc();
     }
 
 
